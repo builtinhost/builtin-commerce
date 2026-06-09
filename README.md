@@ -60,10 +60,6 @@ A professional, mobile-responsive WooCommerce WordPress theme designed for onlin
 3. Configure product images
 4. Customize colors via **Appearance > Customize**
 
-### Payment Methods
-
-See [PAYMENT-METHODS-SETUP.md](./PAYMENT-METHODS-SETUP.md) for Stripe, PayPal, Square setup
-
 ## File Structure
 builtin-commerce/
 ├── front-page.php # Homepage template
