@@ -1,0 +1,519 @@
+﻿/*
+Theme Name: BuiltinHost Commerce
+Theme URI: https://builtinhost.com/commerce
+Author: BuiltinHost
+Author URI: https://builtinhost.com
+Description: Professional WooCommerce e-commerce WordPress theme with beautiful Elementor templates. Perfect for online stores and product showcases.
+Version: 1.0.0
+Requires at least: 5.9
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: builtin-commerce
+Domain Path: /languages
+Tested up to: 6.4
+
+BuiltinHost Commerce is a modern WooCommerce-ready WordPress theme built for online businesses and product sellers.
+Features beautiful Elementor templates, full WooCommerce integration, product showcase, and professional checkout experience.
+*/
+
+:root {
+	--color-primary: #ff6b6b;
+	--color-secondary: #ee5a6f;
+	--color-accent: #00d4aa;
+	--color-dark: #1a1a1a;
+	--color-light: #f8f9fb;
+	--color-white: #ffffff;
+	--font-heading: 'Poppins', sans-serif;
+	--font-body: 'Open Sans', sans-serif;
+	--spacing-base: 8px;
+	--border-radius: 8px;
+	--transition: all 0.3s ease;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: var(--font-body);
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--color-dark);
+	background-color: var(--color-white);
+	margin: 0;
+	padding: 0;
+}
+
+/* Elementor Support */
+.elementor {
+	width: 100%;
+}
+
+.elementor-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-heading);
+	font-weight: 600;
+	line-height: 1.2;
+	margin-top: 0;
+}
+
+h1 { font-size: 48px; }
+h2 { font-size: 36px; }
+h3 { font-size: 24px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+p {
+	margin: 0 0 1em 0;
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: var(--transition);
+}
+
+a:hover {
+	color: var(--color-secondary);
+}
+
+/* Buttons */
+button,
+.button,
+input[type="button"],
+input[type="submit"] {
+	display: inline-block;
+	padding: 12px 24px;
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	border: none;
+	border-radius: var(--border-radius);
+	font-weight: 600;
+	cursor: pointer;
+	transition: var(--transition);
+	font-family: var(--font-body);
+	font-size: 16px;
+}
+
+button:hover,
+.button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+	background-color: var(--color-secondary);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ddd;
+	border-radius: var(--border-radius);
+	font-family: var(--font-body);
+	font-size: 16px;
+	transition: var(--transition);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+/* Images */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* WooCommerce Support */
+.woocommerce-page {
+	background-color: var(--color-light);
+}
+
+.woocommerce ul.products li.product {
+	background: var(--color-white);
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	transition: var(--transition);
+}
+
+.woocommerce ul.products li.product:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+	transform: translateY(-4px);
+}
+
+.woocommerce .product button.button {
+	background-color: var(--color-primary);
+}
+
+.woocommerce .product button.button:hover {
+	background-color: var(--color-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	h1 { font-size: 32px; }
+	h2 { font-size: 28px; }
+	h3 { font-size: 20px; }
+	
+	body {
+		font-size: 14px;
+	}
+}
+
+/* Skip Link */
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: var(--color-primary);
+	color: var(--color-white);
+	padding: 8px;
+	text-decoration: none;
+	z-index: 100;
+}
+
+.skip-link:focus {
+	top: 0;
+}
+
+/* Accessibility */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Homepage Styles */
+.builtin-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+.builtin-home-hero {
+background: linear-gradient(135deg, #0084ff 0%, #0056b3 100%);
+color: white;
+padding: 80px 20px;
+text-align: center;
+}
+
+.builtin-home-hero h1 {
+color: white;
+margin-bottom: 15px;
+font-size: 48px;
+}
+
+.builtin-home-tagline {
+font-size: 20px;
+margin-bottom: 30px;
+opacity: 0.95;
+}
+
+.builtin-cta-button {
+display: inline-block;
+background: #fff000;
+color: #0084ff;
+padding: 15px 35px;
+border-radius: 50px;
+font-weight: 600;
+text-decoration: none;
+transition: all 0.3s ease;
+margin-top: 20px;
+}
+
+.builtin-cta-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.builtin-home-services,
+.builtin-home-team,
+.builtin-home-testimonials,
+.builtin-home-posts,
+.builtin-home-featured,
+.builtin-home-categories,
+.builtin-home-trust {
+padding: 60px 20px;
+border-bottom: 1px solid #eee;
+}
+
+.builtin-home-services h2,
+.builtin-home-team h2,
+.builtin-home-testimonials h2,
+.builtin-home-posts h2,
+.builtin-home-featured h2,
+.builtin-home-categories h2,
+.builtin-home-trust h2 {
+text-align: center;
+margin-bottom: 50px;
+font-size: 36px;
+}
+
+.builtin-services-grid,
+.builtin-team-grid,
+.builtin-testimonials-grid,
+.builtin-posts-grid,
+.builtin-products-grid,
+.builtin-categories-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 30px;
+margin-bottom: 40px;
+}
+
+.builtin-service-card,
+.builtin-team-card,
+.builtin-testimonial-card,
+.builtin-product-card,
+.builtin-category-card {
+background: #f8f9fb;
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+transition: all 0.3s ease;
+}
+
+.builtin-service-card:hover,
+.builtin-team-card:hover,
+.builtin-product-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.builtin-service-image,
+.builtin-team-image,
+.builtin-product-image {
+margin-bottom: 20px;
+border-radius: 8px;
+overflow: hidden;
+background: #e0e0e0;
+height: 200px;
+}
+
+.builtin-service-image img,
+.builtin-team-image img,
+.builtin-product-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.builtin-service-card h3,
+.builtin-team-card h3,
+.builtin-product-card h3,
+.builtin-category-card h3 {
+margin-top: 0;
+margin-bottom: 15px;
+color: #0084ff;
+}
+
+.builtin-read-more,
+.builtin-btn-primary,
+.builtin-btn-secondary {
+display: inline-block;
+color: white;
+background: #0084ff;
+padding: 10px 20px;
+border-radius: 5px;
+font-weight: 600;
+text-decoration: none;
+transition: all 0.3s ease;
+margin-top: 15px;
+border: none;
+cursor: pointer;
+}
+
+.builtin-read-more:hover,
+.builtin-btn-primary:hover {
+background: #0056b3;
+color: white;
+}
+
+.builtin-btn-secondary {
+background: #f8f9fb;
+color: #0084ff;
+border: 2px solid #0084ff;
+}
+
+.builtin-btn-secondary:hover {
+background: #0084ff;
+color: white;
+}
+
+.builtin-testimonial-card {
+padding: 30px;
+font-style: italic;
+border-left: 4px solid #0084ff;
+background: white;
+}
+
+.builtin-testimonial-text {
+margin-bottom: 15px;
+color: #666;
+}
+
+.builtin-testimonial-author {
+font-weight: 600;
+color: #0084ff;
+font-style: normal;
+margin: 0;
+}
+
+.builtin-trust-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 30px;
+text-align: center;
+}
+
+.builtin-trust-item {
+padding: 30px 20px;
+}
+
+.builtin-trust-icon {
+font-size: 48px;
+margin-bottom: 15px;
+color: #0084ff;
+}
+
+.builtin-trust-item h3 {
+margin: 15px 0;
+color: #0084ff;
+}
+
+.builtin-home-sidebar {
+background: #f8f9fb;
+padding: 40px 20px;
+}
+
+.builtin-home-sidebar h3 {
+margin-top: 0;
+margin-bottom: 25px;
+color: #0084ff;
+}
+
+.builtin-categories-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.builtin-categories-list li {
+margin-bottom: 12px;
+}
+
+.builtin-categories-list a {
+color: #0084ff;
+text-decoration: none;
+font-weight: 500;
+transition: all 0.3s ease;
+}
+
+.builtin-categories-list a:hover {
+color: #0056b3;
+padding-left: 5px;
+}
+
+.builtin-category-count {
+color: #999;
+font-size: 0.9em;
+margin-left: 5px;
+}
+
+.builtin-product-price {
+font-size: 20px;
+font-weight: 600;
+color: #0084ff;
+margin: 10px 0;
+}
+
+.builtin-newsletter-form {
+display: flex;
+gap: 10px;
+max-width: 500px;
+margin: 30px auto;
+}
+
+.builtin-newsletter-form input {
+flex: 1;
+padding: 12px 15px;
+border: 1px solid #ddd;
+border-radius: 5px;
+font-size: 16px;
+}
+
+.builtin-newsletter-form button {
+padding: 12px 25px;
+background: #0084ff;
+color: white;
+border: none;
+border-radius: 5px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.builtin-newsletter-form button:hover {
+background: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.builtin-home-hero {
+padding: 50px 20px;
+}
+
+.builtin-home-hero h1 {
+font-size: 32px;
+}
+
+.builtin-services-grid,
+.builtin-team-grid,
+.builtin-testimonials-grid,
+.builtin-posts-grid,
+.builtin-products-grid,
+.builtin-categories-grid {
+grid-template-columns: 1fr;
+}
+
+.builtin-newsletter-form {
+flex-direction: column;
+}
+}
