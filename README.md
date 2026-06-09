@@ -61,7 +61,7 @@ A professional, mobile-responsive WooCommerce WordPress theme designed for onlin
 4. Customize colors via **Appearance > Customize**
 
 ## File Structure
-builtin-commerce/
+builtinhost-commerce/
 ├── front-page.php # Homepage template
 ├── header.php # Global header
 ├── footer.php # Global footer
