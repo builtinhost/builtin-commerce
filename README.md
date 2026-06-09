@@ -41,7 +41,7 @@ A professional, mobile-responsive WooCommerce WordPress theme designed for onlin
 ### Manual Installation
 
 1. Download theme from releases
-2. Upload to `/wp-content/themes/builtin-commerce/`
+2. Upload to `/wp-content/themes/builtinhost-commerce/`
 3. Go to **Appearance > Themes** in admin
 4. Click **Activate**
 
