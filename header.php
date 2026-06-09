@@ -1,7 +1,10 @@
 ﻿<?php
 /**
- * Header template for builtin-commerce theme
- * @package builtin-commerce
+ * Header template for builtinhost-commerce theme
+ * 
+ * @package builtinhost-commerce
+ * @copyright 2024 BuiltinHost
+ * @license GPL-2.0-or-later
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 ?>
@@ -38,14 +41,17 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a1a; background: #fafafa; 
 
 <header class="commerce-header">
 <div class="header-wrap">
-<a href="<?php echo home_url(); ?>" class="store-logo"><?php bloginfo("name"); ?></a>
+<a href="<?php echo esc_url( home_url() ); ?>" class="store-logo"><?php bloginfo("name"); ?></a>
 <div class="header-actions">
-<nav><ul class="header-nav">
-<li><a href="<?php echo home_url("/shop"); ?>">Shop</a></li>
-<li><a href="<?php echo home_url("/about"); ?>">About</a></li>
-<li><a href="<?php echo home_url("/contact"); ?>">Contact</a></li>
-</ul></nav>
-<a href="<?php echo wc_get_cart_url(); ?>" class="cart-btn">
+<nav><?php
+	wp_nav_menu( array(
+		'theme_location' => 'primary',
+		'menu_class'     => 'header-nav',
+		'container'      => false,
+		'fallback_cb'    => 'builtin_commerce_nav_fallback',
+	) );
+?></nav>
+<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-btn">
 Cart
 <?php
 if ( class_exists( 'WooCommerce' ) && WC()->cart ) {

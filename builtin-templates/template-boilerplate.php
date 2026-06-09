@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * PAGE TEMPLATE BOILERPLATE
  * Use this as the standard template for all new pages

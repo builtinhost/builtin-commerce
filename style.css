@@ -9,9 +9,11 @@ Requires at least: 5.9
 Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: builtin-commerce
+Text Domain: builtinhost-commerce
 Domain Path: /languages
 Tested up to: 6.4
+Copyright: 2024 BuiltinHost. Licensed under GPL-2.0-or-later.
+Tags: e-commerce, two-columns, custom-colors, custom-menu, featured-images, full-width-template, theme-options, threaded-comments, translation-ready
 
 BuiltinHost Commerce is a modern WooCommerce-ready WordPress theme built for online businesses and product sellers.
 Features beautiful Elementor templates, full WooCommerce integration, product showcase, and professional checkout experience.
@@ -218,6 +220,30 @@ img {
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 	border-width: 0;
+}
+
+.screen-reader-text {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+}
+
+.screen-reader-text:focus {
+	top: 0;
+	left: 0;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	clip: auto;
+	background: #f1f3f5;
+	padding: 10px;
+	border-radius: 4px;
+	z-index: 9999;
 }
 
 /* Homepage Styles */
@@ -516,4 +542,194 @@ grid-template-columns: 1fr;
 .builtin-newsletter-form {
 flex-direction: column;
 }
+}
+
+/* WordPress Recommended CSS Classes */
+.wp-caption {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+	background: #f5f5f5;
+}
+
+.wp-caption-text {
+	font-size: 0.9em;
+	color: #666;
+	padding: 5px 0;
+	text-align: center;
+}
+
+.sticky {
+	background: #fafafa;
+	border-left: 4px solid #ff6b6b;
+	padding-left: 15px;
+}
+
+.gallery-caption {
+	font-size: 0.9em;
+	color: #666;
+	margin-top: 5px;
+}
+
+.bypostauthor {
+	background: #e6f2ff;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.alignright {
+	float: right;
+	margin: 0 0 1em 1em;
+	max-width: 50%;
+}
+
+.alignleft {
+	float: left;
+	margin: 0 1em 1em 0;
+	max-width: 50%;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Pagination Styles */
+.pagination-nav {
+	display: block;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.pagination-nav .page-number {
+	display: inline-block;
+	margin: 0 5px;
+	padding: 5px 10px;
+	background: #f5f5f5;
+	border-radius: 4px;
+}
+
+.posts-pagination {
+	text-align: center;
+	margin: 30px 0;
+}
+
+.posts-pagination .page-numbers {
+	display: inline-block;
+	padding: 8px 12px;
+	margin: 0 2px;
+	background: #f5f5f5;
+	border-radius: 4px;
+	text-decoration: none;
+	color: #0084ff;
+	transition: all 0.3s ease;
+}
+
+.posts-pagination .page-numbers:hover {
+	background: #0084ff;
+	color: white;
+}
+
+.posts-pagination .page-numbers.current {
+	background: #0084ff;
+	color: white;
+}
+
+/* Comments Styles */
+.comments-area {
+	margin-top: 40px;
+	padding-top: 30px;
+	border-top: 1px solid #ddd;
+}
+
+.comment-list {
+	list-style: none;
+	padding: 0;
+}
+
+.comment-item {
+	margin-bottom: 20px;
+	padding: 15px;
+	background: #f8f9fb;
+	border-radius: 4px;
+}
+
+.comment-item .comment-author {
+	font-weight: 600;
+	color: #0084ff;
+}
+
+.comment-item .comment-text {
+	margin-top: 10px;
+	color: #666;
+}
+
+/* Widget Areas */
+.widget {
+	margin-bottom: 30px;
+	padding: 20px;
+	background: #f8f9fb;
+	border-radius: 4px;
+}
+
+.widget-title {
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 0;
+	margin-bottom: 15px;
+	color: #0084ff;
+	border-bottom: 2px solid #0084ff;
+	padding-bottom: 10px;
+}
+
+.widget ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.widget ul li {
+	margin-bottom: 10px;
+}
+
+.widget ul li a {
+	color: #0084ff;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.widget ul li a:hover {
+	color: #0056b3;
+	padding-left: 5px;
+}
+
+/* Block Styles */
+.wp-block-button.is-style-gradient-button {
+	background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+}
+
+.wp-block-heading.is-style-accent-border {
+	border-bottom: 3px solid #ff6b6b;
+	padding-bottom: 10px;
+}
+
+/* Custom Header Styles */
+.custom-header {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 200px;
+}
+
+.custom-header img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Custom Background */
+body {
+	background-size: cover;
+	background-attachment: fixed;
 }

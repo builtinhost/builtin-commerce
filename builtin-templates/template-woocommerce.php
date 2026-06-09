@@ -1,12 +1,6 @@
 ﻿<?php
 /**
- * The Template for displaying product archives, including the main shop page
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/woocommerce.php.
- *
- * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
- * @version 3.4.0
+woocommerce template
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

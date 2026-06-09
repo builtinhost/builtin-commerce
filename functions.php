@@ -2,6 +2,11 @@
 /**
  * BuiltinHost Commerce Theme Functions
  * 
+ * @package builtinhost-commerce
+ * @author BuiltinHost
+ * @copyright 2024 BuiltinHost
+ * @license GPL-2.0-or-later
+ * 
  * IMPORTANT: All new pages MUST use get_header() and get_footer()
  * See THEME-GUIDELINES.md for development standards
  */
@@ -19,18 +24,120 @@ require_once get_template_directory() . '/inc/elementor-loader.php';
  * Adds theme support for WordPress features
  */
 function builtin_commerce_theme_setup() {
-add_theme_support( 'post-thumbnails' );
-add_theme_support( 'title-tag' );
-add_theme_support( 'custom-logo' );
-add_theme_support( 'responsive-embeds' );
-add_theme_support( 'woocommerce', array(
-'product_grid' => array(
-'default_columns' => 4,
-'default_rows' => 3,
-),
-) );
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'custom-logo' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'html5', array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+		'script',
+		'style',
+	) );
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'custom-header', array(
+		'default-image' => '',
+		'width'         => 1920,
+		'height'        => 600,
+		'flex-width'    => true,
+		'flex-height'   => true,
+	) );
+	add_theme_support( 'custom-background', array(
+		'default-color' => 'fafafa',
+		'default-image' => '',
+	) );
+	register_nav_menu( 'primary', 'Primary Menu' );
+	add_theme_support( 'woocommerce', array(
+		'product_grid' => array(
+			'default_columns' => 4,
+			'default_rows'    => 3,
+		),
+	) );
 }
 add_action( 'after_setup_theme', 'builtin_commerce_theme_setup' );
+
+/**
+ * Register Widget Areas
+ */
+function builtin_commerce_widgets_init() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Primary Sidebar', 'builtinhost-commerce' ),
+		'id'            => 'primary-sidebar',
+		'description'   => esc_html__( 'Main sidebar for pages and posts', 'builtinhost-commerce' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widget Area', 'builtinhost-commerce' ),
+		'id'            => 'footer-widgets',
+		'description'   => esc_html__( 'Widgets for footer area', 'builtinhost-commerce' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'builtin_commerce_widgets_init' );
+
+/**
+ * Register Block Styles
+ */
+function builtin_commerce_register_block_styles() {
+	if ( function_exists( 'register_block_style' ) ) {
+		register_block_style(
+			'core/button',
+			array(
+				'name'         => 'gradient-button',
+				'label'        => esc_html__( 'Gradient', 'builtinhost-commerce' ),
+				'inline_style' => 'background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); border: none;',
+			)
+		);
+
+		register_block_style(
+			'core/heading',
+			array(
+				'name'  => 'accent-border',
+				'label' => esc_html__( 'With Bottom Border', 'builtinhost-commerce' ),
+			)
+		);
+	}
+}
+add_action( 'init', 'builtin_commerce_register_block_styles' );
+
+/**
+ * Register Block Patterns
+ */
+function builtin_commerce_register_block_patterns() {
+	if ( function_exists( 'register_block_pattern' ) ) {
+		register_block_pattern(
+			'builtinhost-commerce/hero-section',
+			array(
+				'title'       => esc_html__( 'Hero Section', 'builtinhost-commerce' ),
+				'description' => esc_html__( 'Full width hero section with heading and CTA button', 'builtinhost-commerce' ),
+				'categories'  => array( 'builtinhost-commerce', 'hero' ),
+				'content'     => '<!-- wp:cover {"url":"","minHeight":400,"isDark":false} -->
+<div class="wp-block-cover"><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">Welcome to Our Store</h2>
+<!-- /wp:heading -->
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Shop Now</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div></div>
+<!-- /wp:cover -->',
+			)
+		);
+	}
+}
+add_action( 'init', 'builtin_commerce_register_block_patterns' );
 
 /**
  * Enqueue Stylesheets
@@ -54,6 +161,11 @@ wp_enqueue_style( 'builtin-commerce-style' );
 wp_dequeue_style( 'woocommerce-general' );
 wp_dequeue_style( 'woocommerce-layout' );
 wp_dequeue_style( 'woocommerce-smallscreen' );
+
+// Enqueue comment-reply script if comments are open
+if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+wp_enqueue_script( 'comment-reply' );
+}
 }
 add_action( 'wp_enqueue_scripts', 'builtin_commerce_scripts', 99 );
 
@@ -187,4 +299,79 @@ background: #e63946;
 }
 add_action( 'wp_head', 'builtin_commerce_custom_styles' );
 
+/**
+ * Add Recommended WordPress CSS Classes
+ * Adds styles for WordPress-recommended classes
+ */
+function builtin_commerce_add_wordpress_css() {
+	?>
+	<style>
+	.wp-caption {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 5px;
+		background: #f5f5f5;
+	}
+	.wp-caption-text {
+		font-size: 0.9em;
+		color: #666;
+		padding: 5px 0;
+		text-align: center;
+	}
+	.sticky {
+		background: #fafafa;
+		border-left: 4px solid #e63946;
+		padding-left: 15px;
+	}
+	.gallery-caption {
+		font-size: 0.9em;
+		color: #666;
+		margin-top: 5px;
+	}
+	.bypostauthor {
+		background: #e6f2ff;
+		padding: 10px;
+		border-radius: 4px;
+	}
+	.alignright {
+		float: right;
+		margin: 0 0 1em 1em;
+		max-width: 50%;
+	}
+	.alignleft {
+		float: left;
+		margin: 0 1em 1em 0;
+		max-width: 50%;
+	}
+	.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	</style>
+	<?php
+}
+add_action( 'wp_head', 'builtin_commerce_add_wordpress_css' );
 
+/**
+ * Add Editor Styles
+ */
+if ( ! has_action( 'admin_init' ) ) {
+	add_action( 'after_setup_theme', function() {
+		add_editor_style( array(
+			'/elegant-global.css',
+		) );
+	});
+}
+
+/**
+ * Navigation Menu Fallback
+ * Displays default navigation if no menu is assigned
+ */
+function builtin_commerce_nav_fallback() {
+	echo '<ul class="header-nav">';
+	echo '<li><a href="' . esc_url( home_url( '/shop' ) ) . '">Shop</a></li>';
+	echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">About</a></li>';
+	echo '<li><a href="' . esc_url( home_url( '/contact' ) ) . '">Contact</a></li>';
+	echo '</ul>';
+}

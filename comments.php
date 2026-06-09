@@ -22,11 +22,11 @@ if ( post_password_required() ) {
             <?php
             $comment_count = get_comments_number();
             if ( 1 === $comment_count ) {
-                esc_html_e( 'One comment', 'builtin-commerce' );
+                esc_html_e( 'One comment', 'builtinhost-commerce' );
             } else {
                 echo esc_html(
                     sprintf(
-                        _n( '%s comment', '%s comments', $comment_count, 'builtin-commerce' ),
+                        _n( '%s comment', '%s comments', $comment_count, 'builtinhost-commerce' ),
                         $comment_count
                     )
                 );
@@ -48,12 +48,12 @@ if ( post_password_required() ) {
         <?php
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
             ?>
-            <nav class="comment-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Comment pagination', 'builtin-commerce' ); ?>">
+            <nav class="comment-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Comment pagination', 'builtinhost-commerce' ); ?>">
                 <div class="nav-previous">
-                    <?php previous_comments_link( esc_html__( '&larr; Older comments', 'builtin-commerce' ) ); ?>
+                    <?php previous_comments_link( esc_html__( '&larr; Older comments', 'builtinhost-commerce' ) ); ?>
                 </div>
                 <div class="nav-next">
-                    <?php next_comments_link( esc_html__( 'Newer comments &rarr;', 'builtin-commerce' ) ); ?>
+                    <?php next_comments_link( esc_html__( 'Newer comments &rarr;', 'builtinhost-commerce' ) ); ?>
                 </div>
             </nav>
             <?php

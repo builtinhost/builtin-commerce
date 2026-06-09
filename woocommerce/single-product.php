@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * Full Product Page Template - BuiltinHost Commerce
+ * Full Product Page Template - Builtin Commerce
  * Displays product with elegant 2-column layout
  */
 

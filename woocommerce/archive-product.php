@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Shop Archive Template - Simplified
  * Fresh approach with inline styles to eliminate gaps

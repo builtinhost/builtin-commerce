@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Elegant Checkout Page Template
  * Uses WooCommerce shortcode for maximum compatibility

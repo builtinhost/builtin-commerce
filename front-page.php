@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * Front Page Template - BuiltinHost Commerce
+ * Front Page Template - Builtin Commerce
  * Beautiful gradient hero with dynamic featured products
  */
 

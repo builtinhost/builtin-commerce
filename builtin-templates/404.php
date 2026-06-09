@@ -1,8 +1,8 @@
 <?php
 /**
  * Template: 404
- * Theme: Commerce
- * Builder: Vanilla PHP
+ * Theme: Builtin Commerce
+ * Builder: Builtin
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
